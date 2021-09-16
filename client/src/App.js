@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import BackGroundVideo from "./components/BackgroundVideo";
+import Description from "./components/Landing-page-Decription";
 import NavBar from "./components/NavBar";
 
 
@@ -13,6 +14,7 @@ function App() {
     <div >
       <NavBar />
       <BackGroundVideo />
+      <Description/>
     </div>
   );
 }
