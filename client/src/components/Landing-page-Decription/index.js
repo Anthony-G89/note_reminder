@@ -13,7 +13,7 @@ const Description = () => {
             </div>
             <div className="linksContainer">
                  <Link to="/register"><a className="registerLink links" href="#">Register</a></Link>
-                 <Link><a className="loginLink links" href="#">Log In</a></Link>
+                 <Link to="/login"><a className="loginLink links" href="#">Log In</a></Link>
             </div>
         </div>
     )

@@ -6,6 +6,7 @@ import BackGroundVideo from "./components/BackgroundVideo";
 import Description from "./components/Landing-page-Decription";
 import NavBar from "./components/NavBar";
 import Register from "./components/Register";
+import LoginUser from "./components/Login-Users";
 
 
 
@@ -20,6 +21,7 @@ function App() {
   
         <Route exact path="/" component={Description} />
         <Route path="/register" component={Register} />
+        <Route path="/login" component={LoginUser} />
       </Router>
     </div>
   );
