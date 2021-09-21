@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React from 'react';
+import React  from 'react';
 import "./style.css";
 import { Link } from 'react-router-dom';
 
@@ -22,12 +22,12 @@ const LoginUser = () => {
                 <div className="col-6">
                     <form className="formWrapper">
                         <label className="loginLabel">Email</label>
-                        <input className="loginInput" />
+                        <input className="loginInput"  placeholder="Enter Email" />
                         <br />
                         <label className="loginLabel">Password</label>
-                        <input className="loginInput" />
+                        <input className="loginInput" placeholder=" Enter Password" />
                         <p className="newUser">New to Note Reminder?
-                            <Link to="/register"><a href="#" className="registerBtnFromLogin">Register here</a></Link>
+                            <Link to="/register"><a href="/register" className="registerBtnFromLogin">Register here</a></Link>
                         </p>
                         <button className="loginBtn" onClick={loginUserBtn}>Log In</button>
                     </form>

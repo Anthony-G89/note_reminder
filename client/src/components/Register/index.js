@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React from 'react';
+import React, { useState } from 'react';
 import "./style.css";
 import { Link } from 'react-router-dom';
 
@@ -8,9 +8,16 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
 
-function registerUser  ()  {
-    alert("Register btn is working")
-}
+
+    const [firstName, setFirstName] = useState("");
+    const [lasttName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [Password, setPassword] = useState("");
+
+
+    function registerUser() {
+        alert("Register btn is working")
+    }
 
     return (
         <div className="registerWrapper">
@@ -21,16 +28,16 @@ function registerUser  ()  {
                 <div className="col-6">
                     <form className="formWrapper">
                         <label className="registerLabel">First Name</label>
-                        <input className="registerInput" />
+                        <input className="registerInput" placeholder="Enter First Name...." onChange={event => setFirstName(event.target.value)} />
                         <label className="registerLabel">Last Name</label>
-                        <input className="registerInput" />
+                        <input className="registerInput" placeholder="Enter Last Name...." onChange={event => setLastName(event.target.value)} />
                         <label className="registerLabel">Email</label>
-                        <input className="registerInput" />
+                        <input className="registerInput" placeholder="Enter Email" onChange={event => setEmail(event.target.value)} />
                         <label className="registerLabel">Password</label>
-                        <input className="registerInput" />
+                        <input className="registerInput" placeholder=" Enter Password" onChange={event => setPassword(event.target.value)} />
 
                         <p className="alreadyAMember">Already on Note Reminder?
-                            <Link><a className="loginFromRegisterBtn" href="/login">Log in</a></Link>
+                            <Link to="/login"><a className="loginFromRegisterBtn" href="/login">Log in</a></Link>
                         </p>
 
                         <button className="registerBtn" onClick={registerUser}>Register</button>
