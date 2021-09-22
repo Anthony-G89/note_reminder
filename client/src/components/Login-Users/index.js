@@ -3,14 +3,16 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React  from 'react';
 import "./style.css";
-import { Link } from 'react-router-dom';
+import { Link , useHistory } from 'react-router-dom';
 
 
 
 const LoginUser = () => {
 
+    let history = useHistory();
+
     function loginUserBtn() {
-        alert("login btn is working")
+        history.push("/userDashbored")
     }
 
     return (

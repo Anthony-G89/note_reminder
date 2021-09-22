@@ -1,29 +1,19 @@
 module.exports = function (sequelize, DataTypes) {
     const Note = sequelize.define("Note", {
-        firstName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        lastName: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        email: {
+        title: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                isEmail: true,
+                len: [1]
             }
         },
-        password: {
-            type: DataTypes.STRING,
+        body: {
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
-                len: [1, 20]
+                len: [1]
             }
         }
-
-    });
-
+    })
     return Note;
-}
+};

@@ -1,18 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useState } from 'react';
+import React from 'react';
 import "./style.css";
 import { Link } from 'react-router-dom';
 
 
 
-const Register = () => {
+const Register = ({ setFirstName, setLastName, setEmail, setPassword }) => {
 
 
-    const [firstName, setFirstName] = useState("");
-    const [lasttName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [Password, setPassword] = useState("");
+
 
 
     function registerUser() {
