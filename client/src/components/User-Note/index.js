@@ -14,6 +14,28 @@ const UserNote = () => {
                     </ul>
                 </nav>
             </header>
+
+            <div className="noteContainer">
+                <h2 className="userWelcomeMessage">Welcome Anthony! to Note Reminder</h2>
+                <div className="row rowDiv">
+                    <div className="col-6 titleAndBody">
+                        <div className="titleAndInputContainer">
+                            <label>Title</label>
+                            <br />
+                            <input id="noteTitle" />
+                        </div>
+
+                        <label>Body</label>
+                        <textarea id="noteBody" rows="15"></textarea>
+                        <button className="addingNoteBtn">Add Note</button>
+                    </div>
+
+                    <div className="col-6">
+                        <p>All saved notes will show here</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     )
 };
