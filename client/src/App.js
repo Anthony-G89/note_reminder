@@ -22,7 +22,7 @@ function App() {
 
 
 
-  
+
   return (
     <div >
       <Router>
@@ -41,7 +41,12 @@ function App() {
         />
 
         <Route path="/login" component={LoginUser} />
-        <Route path="/userDashbored" component={UserNote} />
+        <Route path="/userDashbored" render={(props) => (
+          <UserNote
+            displayingFirstName={firstName}
+          />
+        )}
+        />
       </Router>
     </div>
   );

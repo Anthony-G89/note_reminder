@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 .userNoteWrapper {
     position: fixed;
     width: 100%;
@@ -127,4 +127,40 @@ label {
 
 .addingNoteBtn:hover {
     background-color: rgb(36, 122, 161);
+}
+
+
+/* Style for how user notes will display */
+
+.card {
+    flex-wrap: wrap;
+    width: 18em;
+    margin: 20px 0px;
+}
+
+.cardBody {
+    height: 205px;
+    padding: 10px;
+}
+
+.cardText {
+    font-family: 'Poppins', sans-serif;
+}
+
+.deleteAndEditContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    top: 40px;
+    right: 2px;
+}
+
+.deleteBtn {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.editBtn {
+    cursor: pointer;
 }
