@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import Register from "./components/Register";
 import LoginUser from "./components/Login-Users";
 import UserNote from "./components/User-Note";
+import DeleteModal from "./components/DeleteModal";
 
 
 
@@ -21,6 +22,16 @@ function App() {
   const [Password, setPassword] = useState("");
 
 
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const closeDeleteModal = () => {
+    setShowDeleteModal(false);
+  };
+
+  const openDeleteModal = () => {
+    setShowDeleteModal(true);
+  };
+
 
 
   return (
@@ -28,6 +39,7 @@ function App() {
       <Router>
         <NavBar />
         <BackGroundVideo />
+
 
         <Route exact path="/" component={Description} />
         <Route path="/register"
@@ -44,9 +56,17 @@ function App() {
         <Route path="/userDashbored" render={(props) => (
           <UserNote
             displayingFirstName={firstName}
+            showDeleteModal={openDeleteModal}
           />
         )}
         />
+
+        {
+          showDeleteModal &&
+          <DeleteModal
+            closeModal={closeDeleteModal}
+          />
+        }
       </Router>
     </div>
   );
