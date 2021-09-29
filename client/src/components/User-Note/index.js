@@ -3,7 +3,7 @@ import React from 'react';
 import "./style.css";
 import { Link } from 'react-router-dom';
 
-const UserNote = ({displayingFirstName , showDeleteModal, showEditModal}) => {
+const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody , addingNote }) => {
 
     return (
 
@@ -24,12 +24,22 @@ const UserNote = ({displayingFirstName , showDeleteModal, showEditModal}) => {
                         <div className="titleAndInputContainer">
                             <label>Title</label>
                             <br />
-                            <input id="noteTitle" />
+                            <input id="noteTitle"
+                                type="text"
+                                name="noteTitle"
+                                onChange={event => capturingTitle(event.target.value)}
+                            />
                         </div>
 
                         <label>Body</label>
-                        <textarea id="noteBody" rows="15"></textarea>
-                        <button className="addingNoteBtn">Add Note</button>
+                        <textarea
+                            id="noteBody"
+                            rows="15"
+                            name="noteBody"
+                            onChange={event => capturingBody(event.target.value)}
+                        >
+                        </textarea>
+                        <button className="addingNoteBtn" onClick={addingNote}>Add Note</button>
                     </div>
 
                     <div className="col-6">

@@ -10,6 +10,8 @@ import LoginUser from "./components/Login-Users";
 import UserNote from "./components/User-Note";
 import DeleteModal from "./components/DeleteModal";
 import EditModal from "./components/EditModal";
+import axios from "axios";
+// import { response } from "express";
 
 
 
@@ -23,11 +25,9 @@ function App() {
   const [Password, setPassword] = useState("");
 
 
+  // Opening and Closing Delete Modal
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  const [showEditModal, setShowEditModal] = useState(false);
-
-  // Opening and Closing Delete Modal
   const closeDeleteModal = () => {
     setShowDeleteModal(false);
   };
@@ -36,11 +36,34 @@ function App() {
   };
 
   // Opening and Closing Edit Modal
+  const [showEditModal, setShowEditModal] = useState(false);
+
   const openEditModal = () => {
     setShowEditModal(true);
   };
   const closeEditModal = () => {
     setShowEditModal(false);
+  };
+
+
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [noteList, setNoteList] = useState([]);
+
+
+
+  const submitNote = (e) => {
+    e.preventDefault();
+    axios.post("/api/addingNote", {
+      title: title,
+      body: body
+    }).then((response) => {
+     console.log(response)
+      // setNoteList([
+      //   ...noteList,
+      //   { title: title, body: body }
+      // ])
+    })
   };
 
 
@@ -68,6 +91,9 @@ function App() {
             displayingFirstName={firstName}
             showDeleteModal={openDeleteModal}
             showEditModal={openEditModal}
+            capturingTitle={setTitle}
+            capturingBody={setBody}
+            addingNote={submitNote}
           />
         )}
         />
