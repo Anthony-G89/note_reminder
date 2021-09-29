@@ -3,7 +3,7 @@ import React from 'react';
 import "./style.css";
 import { Link } from 'react-router-dom';
 
-const UserNote = ({displayingFirstName , showDeleteModal}) => {
+const UserNote = ({displayingFirstName , showDeleteModal, showEditModal}) => {
 
     return (
 
@@ -39,7 +39,7 @@ const UserNote = ({displayingFirstName , showDeleteModal}) => {
                                 <p className="cardText"> Have a meeting today with Mr.smith at 3pm</p>
                                 <div className="deleteAndEditContainer">
                                     <img className="deleteBtn" onClick={showDeleteModal} title="Delete" src={process.env.PUBLIC_URL + "./assets/outline_delete_black_36dp.png"} />
-                                    <img className="editBtn "  title="Edit" src={process.env.PUBLIC_URL + "./assets/outline_edit_note_black_36dp.png"} />
+                                    <img className="editBtn " onClick={showEditModal} title="Edit" src={process.env.PUBLIC_URL + "./assets/outline_edit_note_black_36dp.png"} />
                                 </div>
                             </div>
                         </div>

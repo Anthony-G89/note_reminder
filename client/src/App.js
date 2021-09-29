@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import LoginUser from "./components/Login-Users";
 import UserNote from "./components/User-Note";
 import DeleteModal from "./components/DeleteModal";
+import EditModal from "./components/EditModal";
 
 
 
@@ -24,12 +25,22 @@ function App() {
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
+  const [showEditModal, setShowEditModal] = useState(false);
+
+  // Opening and Closing Delete Modal
   const closeDeleteModal = () => {
     setShowDeleteModal(false);
   };
-
   const openDeleteModal = () => {
     setShowDeleteModal(true);
+  };
+
+  // Opening and Closing Edit Modal
+  const openEditModal = () => {
+    setShowEditModal(true);
+  };
+  const closeEditModal = () => {
+    setShowEditModal(false);
   };
 
 
@@ -51,20 +62,25 @@ function App() {
               setPassword={setPassword} />
           )}
         />
-
         <Route path="/login" component={LoginUser} />
         <Route path="/userDashbored" render={(props) => (
           <UserNote
             displayingFirstName={firstName}
             showDeleteModal={openDeleteModal}
+            showEditModal={openEditModal}
           />
         )}
         />
-
         {
           showDeleteModal &&
           <DeleteModal
             closeModal={closeDeleteModal}
+          />
+        },
+        {
+          showEditModal &&
+          <EditModal
+            closeEditModal={closeEditModal}
           />
         }
       </Router>
