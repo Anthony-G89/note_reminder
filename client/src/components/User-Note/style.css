@@ -132,28 +132,51 @@ label {
 
 /* Style for how user notes will display */
 
-.card {
+.col-6 {
+    overflow-y: auto;
+}
+
+.displayingNotes {
+    display: flex;
     flex-wrap: wrap;
-    width: 18em;
-    margin: 20px 0px;
+    flex-direction: column;
+    background-color:  rgb(224, 240, 243);
+    width: 31%;
+    float: left;
+    padding: 5px;
+    border: 1px solid black;
+    height: 225px;
+    margin: 10px;
+    text-overflow: ellipsis;
+    position: relative;
 }
 
-.cardBody {
-    height: 205px;
-    padding: 10px;
+.userNoteTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+    font-size: 19px ;
 }
 
-.cardText {
+.userNoteBody {
+    display: block;
+    width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-family: 'Poppins', sans-serif;
 }
+
 
 .deleteAndEditContainer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     position: relative;
-    top: 40px;
-    right: 2px;
+    top: 100px;
+    right: 5px;
 }
 
 .deleteBtn {

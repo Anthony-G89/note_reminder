@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import BackGroundVideo from "./components/BackgroundVideo";
 import Description from "./components/Landing-page-Decription";
@@ -52,19 +52,28 @@ function App() {
 
 
 
-  const submitNote = (e) => {
-    e.preventDefault();
+  const submitNote = () => {
     axios.post("/api/addingNote", {
       title: title,
       body: body
     }).then((response) => {
-     console.log(response)
-      // setNoteList([
-      //   ...noteList,
-      //   { title: title, body: body }
-      // ])
+      //  console.log(response.data)
+      const noteID = response.data.id;
+      setNoteList([
+        ...noteList,
+        { title: title, body: body, id: noteID }
+      ])
     })
   };
+
+  function loadNotes() {
+    axios.get("/getNotes").then(res =>
+      setNoteList(res.data))
+  };
+
+  useEffect(() => {
+    loadNotes()
+  }, []);
 
 
 
@@ -94,6 +103,7 @@ function App() {
             capturingTitle={setTitle}
             capturingBody={setBody}
             addingNote={submitNote}
+            noteList={noteList}
           />
         )}
         />

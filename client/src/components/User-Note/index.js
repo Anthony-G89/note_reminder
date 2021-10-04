@@ -3,7 +3,8 @@ import React from 'react';
 import "./style.css";
 import { Link } from 'react-router-dom';
 
-const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody , addingNote }) => {
+const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody, addingNote, noteList }) => {
+
 
     return (
 
@@ -43,16 +44,21 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
                     </div>
 
                     <div className="col-6">
-                        <div className="card">
-                            <div className="cardBody">
-                                <h5>Meeting</h5>
-                                <p className="cardText"> Have a meeting today with Mr.smith at 3pm</p>
-                                <div className="deleteAndEditContainer">
-                                    <img className="deleteBtn" onClick={showDeleteModal} title="Delete" src={process.env.PUBLIC_URL + "./assets/outline_delete_black_36dp.png"} />
-                                    <img className="editBtn " onClick={showEditModal} title="Edit" src={process.env.PUBLIC_URL + "./assets/outline_edit_note_black_36dp.png"} />
+                        {noteList.length ?
+                            noteList.map(note => (
+                                <div key={note.id} className="displayingNotes">
+                                    <div className="userNoteTitle">{note.title}</div>
+                                    <div className="userNoteBody">{note.body}</div>
+                                    <div className="deleteAndEditContainer">
+                                        <img className="deleteBtn" onClick={showDeleteModal} title="Delete" src={process.env.PUBLIC_URL + "./assets/outline_delete_black_36dp.png"} />
+                                        <img className="editBtn " onClick={showEditModal} title="Edit" src={process.env.PUBLIC_URL + "./assets/outline_edit_note_black_36dp.png"} />
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            ))
+                            : <h1>Enter a note</h1>
+                        }
+
+
                     </div>
                 </div>
             </div>
@@ -61,4 +67,4 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
     )
 };
 
-export default UserNote
+export default UserNote;
