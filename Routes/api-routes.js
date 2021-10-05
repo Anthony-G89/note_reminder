@@ -37,4 +37,21 @@ module.exports = function (app) {
             })
     });
 
+
+    app.put("/api/addingNote/:id", (req, res) => {
+        db.Note.update({
+            title: req.body.title,
+            body: req.body.body
+        }, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (results) {
+            res.json(results)
+        })
+            .catch(function (err) {
+                res.json(err)
+            })
+    });
+
 };

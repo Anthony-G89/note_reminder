@@ -17,7 +17,7 @@ import axios from "axios";
 function App() {
 
 
-  // Passing props to Register to capture user registering
+  //  capturing user register info
   const [firstName, setFirstName] = useState("");
   const [lasttName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,6 +29,7 @@ function App() {
   const [body, setBody] = useState("");
   const [noteList, setNoteList] = useState([]);
   const [deletingNote, setDeletingNote] = useState({});
+  const [editingNote, setEditingNote] = useState([]);
 
 
   // Opening and Closing Delete Modal
@@ -46,17 +47,14 @@ function App() {
   // Opening and Closing Edit Modal
   const [showEditModal, setShowEditModal] = useState(false);
 
-  const openEditModal = () => {
+  const openEditModal = (note) => {
+    // console.log(note)
+    setEditingNote(note);
     setShowEditModal(true);
   };
   const closeEditModal = () => {
     setShowEditModal(false);
   };
-
-
-
-
-
 
 
   // Function to get all notes
@@ -99,7 +97,9 @@ function App() {
       })
   };
 
-
+  const handleNoteUpdate = (updatedNote) => {
+    // console.log(updatedNote)
+  };
 
   return (
     <div >
@@ -142,7 +142,10 @@ function App() {
         {
           showEditModal &&
           <EditModal
+            openEditModal={openEditModal}
             closeEditModal={closeEditModal}
+            updateNote={handleNoteUpdate}
+            editNote={editingNote}
           />
         }
       </Router>

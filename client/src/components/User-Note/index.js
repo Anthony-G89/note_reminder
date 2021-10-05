@@ -3,7 +3,7 @@ import React from 'react';
 import "./style.css";
 import { Link } from 'react-router-dom';
 
-const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody, addingNote, noteList }) => {
+const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody, addingNote, noteList}) => {
 
 
     return (
@@ -51,11 +51,11 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
                                     <div className="userNoteBody">{note.body}</div>
                                     <div className="deleteAndEditContainer">
                                         <img className="deleteBtn" onClick={() => showDeleteModal(note)} title="Delete" src={process.env.PUBLIC_URL + "./assets/outline_delete_black_36dp.png"} />
-                                        <img className="editBtn " onClick={showEditModal} title="Edit" src={process.env.PUBLIC_URL + "./assets/outline_edit_note_black_36dp.png"} />
+                                        <img className="editBtn " onClick={() => showEditModal(note)} title="Edit" src={process.env.PUBLIC_URL + "./assets/outline_edit_note_black_36dp.png"} />
                                     </div>
                                 </div>
                             ))
-                            
+
                             : <div className="noNotesContainer">
                                 <h1 className="noNotesh1">Enter a note ✏️</h1>
                             </div>
