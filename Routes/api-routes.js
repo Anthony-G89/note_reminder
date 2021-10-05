@@ -20,6 +20,21 @@ module.exports = function (app) {
                 console.error(err);
                 res.json(err);
             });
-    })
+    });
+
+
+    app.delete("/api/addingNote/:id", (req, res) => {
+        console.log(req.params.id)
+        db.Note.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (results) {
+            res.json(results)
+        })
+            .catch(function (err) {
+                res.json(err)
+            })
+    });
 
 };

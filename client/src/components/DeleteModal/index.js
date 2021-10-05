@@ -1,8 +1,8 @@
 import React from 'react';
 import "./style.css";
 
-const DeleteModal = ({ closeModal }) => {
-
+const DeleteModal = ({ closeModal , deleteNote, note }) => {
+    // console.log(note)
     return (
 
         <div className="modal-wrapper">
@@ -16,7 +16,7 @@ const DeleteModal = ({ closeModal }) => {
                 </div>
                 <div className="modal-footer">
                     <button className="cancelBtn" onClick={closeModal}>Cancel</button>
-                    <button className="deleteBtnInModal">Delete</button>
+                    <button className="deleteBtnInModal" onClick={() => deleteNote(note.id)}>Delete</button>
                 </div>
             </div>
         </div>

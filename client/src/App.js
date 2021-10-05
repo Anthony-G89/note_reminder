@@ -11,18 +11,24 @@ import UserNote from "./components/User-Note";
 import DeleteModal from "./components/DeleteModal";
 import EditModal from "./components/EditModal";
 import axios from "axios";
-// import { response } from "express";
 
 
 
 function App() {
 
 
-  // Passing props to Register to capture user Info 
+  // Passing props to Register to capture user registering
   const [firstName, setFirstName] = useState("");
   const [lasttName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+
+
+  //  Capturing what the user types for their notes
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [noteList, setNoteList] = useState([]);
+  const [deletingNote, setDeletingNote] = useState({});
 
 
   // Opening and Closing Delete Modal
@@ -31,7 +37,9 @@ function App() {
   const closeDeleteModal = () => {
     setShowDeleteModal(false);
   };
-  const openDeleteModal = () => {
+  const openDeleteModal = (note) => {
+    // console.log(note)
+    setDeletingNote(note)
     setShowDeleteModal(true);
   };
 
@@ -46,26 +54,12 @@ function App() {
   };
 
 
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
-  const [noteList, setNoteList] = useState([]);
 
 
 
-  const submitNote = () => {
-    axios.post("/api/addingNote", {
-      title: title,
-      body: body
-    }).then((response) => {
-      //  console.log(response.data)
-      const noteID = response.data.id;
-      setNoteList([
-        ...noteList,
-        { title: title, body: body, id: noteID }
-      ])
-    })
-  };
 
+
+  // Function to get all notes
   function loadNotes() {
     axios.get("/getNotes").then(res =>
       setNoteList(res.data))
@@ -74,6 +68,36 @@ function App() {
   useEffect(() => {
     loadNotes()
   }, []);
+
+  //  Submitting Note
+  const submitNote = (e) => {
+    e.preventDefault();
+    if (!title || !body) {
+      alert("please enter a Title and Body");
+      return;
+    };
+    axios.post("/api/addingNote", {
+      title: title,
+      body: body
+    }).then((response) => {
+      const noteID = response.data.id;
+      setNoteList([
+        ...noteList,
+        { title: title, body: body, id: noteID }
+      ])
+    })
+  };
+
+  // Deleting Note
+  const deleteNote = (id) => {
+    console.log(id)
+    axios.delete(`/api/addingNote/${id}`)
+      .then(response => {
+        const newNoteList = noteList.filter(note => note.id !== id);
+        setNoteList(newNoteList);
+        closeDeleteModal();
+      })
+  };
 
 
 
@@ -111,6 +135,8 @@ function App() {
           showDeleteModal &&
           <DeleteModal
             closeModal={closeDeleteModal}
+            deleteNote={deleteNote}
+            note={deletingNote}
           />
         },
         {

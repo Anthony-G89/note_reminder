@@ -129,6 +129,17 @@ label {
     background-color: rgb(36, 122, 161);
 }
 
+.noNotesContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.noNotesh1 {
+    font-family: 'Roboto Slab', serif;
+}
 
 /* Style for how user notes will display */
 
@@ -174,9 +185,9 @@ label {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    position: relative;
-    top: 100px;
-    right: 5px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 .deleteBtn {

@@ -50,12 +50,15 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
                                     <div className="userNoteTitle">{note.title}</div>
                                     <div className="userNoteBody">{note.body}</div>
                                     <div className="deleteAndEditContainer">
-                                        <img className="deleteBtn" onClick={showDeleteModal} title="Delete" src={process.env.PUBLIC_URL + "./assets/outline_delete_black_36dp.png"} />
+                                        <img className="deleteBtn" onClick={() => showDeleteModal(note)} title="Delete" src={process.env.PUBLIC_URL + "./assets/outline_delete_black_36dp.png"} />
                                         <img className="editBtn " onClick={showEditModal} title="Edit" src={process.env.PUBLIC_URL + "./assets/outline_edit_note_black_36dp.png"} />
                                     </div>
                                 </div>
                             ))
-                            : <h1>Enter a note</h1>
+                            
+                            : <div className="noNotesContainer">
+                                <h1 className="noNotesh1">Enter a note ✏️</h1>
+                            </div>
                         }
 
 
