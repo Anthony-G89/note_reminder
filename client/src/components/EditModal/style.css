@@ -28,3 +28,19 @@
     cursor: pointer;
     font-size: 35px;
 }
+
+#EditNoteTitle {
+    position: relative;
+    right: 88px;
+    width: 177%;
+    padding: 3px 0px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+#EditNoteBody {
+    resize: none;
+    width: 90%;
+    padding: 7px;
+    font-family: 'Poppins', sans-serif;
+}

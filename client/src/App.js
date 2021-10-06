@@ -14,6 +14,7 @@ import axios from "axios";
 
 
 
+
 function App() {
 
 
@@ -97,8 +98,20 @@ function App() {
       })
   };
 
+
+
+  // Updating Note
   const handleNoteUpdate = (updatedNote) => {
-    // console.log(updatedNote)
+    console.log(updatedNote)
+    const newList = noteList.map((note) => {
+      if (note.id === updatedNote.id) {
+        return updatedNote
+      }
+      return note
+    })
+    setNoteList(newList);
+    closeEditModal();
+    // window.location.reload();
   };
 
   return (
@@ -142,7 +155,6 @@ function App() {
         {
           showEditModal &&
           <EditModal
-            openEditModal={openEditModal}
             closeEditModal={closeEditModal}
             updateNote={handleNoteUpdate}
             editNote={editingNote}
