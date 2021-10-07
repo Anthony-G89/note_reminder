@@ -19,7 +19,7 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
             </header>
 
             <div className="noteContainer">
-                <h2 className="userWelcomeMessage"> Hello {displayingFirstName} !</h2>
+                <h2 className="userWelcomeMessage"> Hey Anthony! {displayingFirstName} </h2>
                 <div className="row rowDiv">
                     <div className="col-6 titleAndBody">
                         <div className="titleAndInputContainer">

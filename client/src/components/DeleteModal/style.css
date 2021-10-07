@@ -68,9 +68,13 @@
 .cancelBtn {
     padding: 4px 10px;
     font-family: 'Poppins', sans-serif;
-    background-color: rgb(36, 122, 161);
+    background-color:  rgb(106, 166, 194);
     color: white;
     letter-spacing: 1px;
+}
+
+.cancelBtn:hover {
+    background-color: rgb(36, 122, 161);
 }
 
 .deleteBtnInModal {
