@@ -75,11 +75,20 @@
     position: absolute;
     top: 85px;
     width: 99%;
-    height: 80vh;
     background-color: white;
     margin: 10px ;
     border-radius: 5px;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.listOfNote {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    min-height: 80vh;
+    max-height: 80vh;
+    padding-bottom: 40px;
 }
 
 .titleAndBody {
@@ -94,7 +103,7 @@
 .titleAndInputContainer {
     position: relative;
     text-align: center;
-    bottom: 115px;
+    bottom: 63px;
 }
 
 label {
@@ -115,6 +124,7 @@ label {
     resize: none;
     width: 90%;
     padding: 7px;
+    height: 40vh;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -146,23 +156,15 @@ label {
 
 /* Style for how user notes will display */
 
-.col-6 {
-    overflow-y: auto;
-}
-
 .displayingNotes {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    background-color:  rgb(224, 240, 243);
-    width: 31%;
-    float: left;
-    padding: 5px;
-    border: 1px solid black;
-    height: 225px;
-    margin: 10px;
-    text-overflow: ellipsis;
     position: relative;
+    border: 1px solid black;
+    text-overflow: ellipsis;
+    background-color: rgb(224, 240, 243);
+    height: 225px;
+    width: 31%;
+    padding: 5px;
+    margin: 10px;
 }
 
 .userNoteTitle {
@@ -181,6 +183,7 @@ label {
     text-overflow: ellipsis;
     white-space: nowrap;
     font-family: 'Poppins', sans-serif;
+    /* add background color if you want to Color: White */
 }
 
 
@@ -200,4 +203,15 @@ label {
 
 .editBtn {
     cursor: pointer;
+}
+
+
+
+/* Media queries */
+
+
+@media screen and (max-width:1537px) {
+    .displayingNotes {
+        width: 38%;
+    }
 }

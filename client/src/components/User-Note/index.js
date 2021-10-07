@@ -43,7 +43,7 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
                         <button className="addingNoteBtn" onClick={addingNote}>Add Note</button>
                     </div>
 
-                    <div className="col-6">
+                    <div className="col-6 listOfNote">
                         {noteList.length ?
                             noteList.map(note => (
                                 <div key={note.id} className="displayingNotes">
