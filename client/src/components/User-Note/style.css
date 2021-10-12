@@ -61,14 +61,30 @@
     background-color: #dfe3e4;
 }
 
-.userWelcomeMessage {
+.userNameAndSearchBarContainer {
     display: flex;
-    justify-content: center;
-    margin: 20px;
-    background: linear-gradient(77deg, rgba(58,100,116,1) 0%, rgba(7,64,73,1) 49%, rgba(11,71,107,1) 69%, rgba(24,116,157,1) 100%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    justify-content: space-between;
+    align-items: center;
+    margin: 18px 0px;
+}
+
+.userWelcomeMessage {
+   margin-left: 380px;
    
+}
+
+.searchBar {
+    margin-right: 102px;
+    width: 18%;
+    text-align: center;
+    min-width: 25%;
+    border: none;
+    padding: 3px 0px;
+}
+
+.searchIcon {
+    position: fixed;
+    right: 108px;
 }
 
 .rowDiv {

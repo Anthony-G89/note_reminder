@@ -3,7 +3,10 @@ import React from 'react';
 import "./style.css";
 import { Link } from 'react-router-dom';
 
-const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody, addingNote, noteList}) => {
+const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody, addingNote, noteList }) => {
+
+
+    // const []
 
 
     return (
@@ -19,7 +22,11 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
             </header>
 
             <div className="noteContainer">
-                <h2 className="userWelcomeMessage"> Hey Anthony! {displayingFirstName} </h2>
+                <div className='userNameAndSearchBarContainer'>
+                    <h2 className="userWelcomeMessage"> Hey Anthony! {displayingFirstName} </h2>
+                    <input className='searchBar' placeholder='Search for notes by title...'  />
+                    <img className='searchIcon' src={process.env.PUBLIC_URL + "./assets/Search_black_small.png"} />
+                </div>
                 <div className="row rowDiv">
                     <div className="col-6 titleAndBody">
                         <div className="titleAndInputContainer">
