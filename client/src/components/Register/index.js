@@ -23,7 +23,7 @@ const Register = ({ setFirstName, setLastName, setEmail, setPassword }) => {
                     <img src={process.env.PUBLIC_URL + "./assets/register-img-min.jpg"} className="registerImage" alt="Image for register page" />
                 </div>
                 <div className="col-6">
-                    <form className="formWrapper">
+                    <form className="formWrapperInRegister">
                         <label className="registerLabel">First Name</label>
                         <input className="registerInput" placeholder="Enter First Name...." onChange={event => setFirstName(event.target.value)} />
                         <label className="registerLabel">Last Name</label>

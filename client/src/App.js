@@ -32,7 +32,7 @@ function App() {
   const [deletingNote, setDeletingNote] = useState({});
   const [editingNote, setEditingNote] = useState([]);
 
-
+  
   // Opening and Closing Delete Modal
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -85,6 +85,7 @@ function App() {
         { title: title, body: body, id: noteID }
       ])
     })
+   
   };
 
   // Deleting Note

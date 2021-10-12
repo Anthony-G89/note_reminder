@@ -5,6 +5,7 @@
 
 .video {
     position: fixed;
-    width: 100%;
+    min-width: 100vw;
+    min-height: 100vh;
     z-index: 1;
 }

@@ -22,7 +22,7 @@ a:hover {
     height: 94vh;
 }
 
-.formWrapper {
+.formWrapperInRegister {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,4 +75,14 @@ input {
 }
 .registerBtn:hover {
     background-color: rgb(36, 122, 161);
+}
+
+
+
+@media screen  and (max-width:900px) and (orientation: portrait) {
+
+    .formWrapperInRegister {
+        height: 94vh;
+        margin: 10px auto;
+    }
 }

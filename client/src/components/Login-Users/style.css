@@ -16,7 +16,7 @@
     height: 94vh; 
 }
 
-.formWrapper {
+.formWrapperInLogin {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,4 +72,15 @@ input {
 
 .loginBtn:hover {
     background-color: rgb(36, 122, 161);
+}
+
+@media screen  and (max-width:900px) and (orientation: portrait) {
+
+    .formWrapperInLogin{
+        height: 94vh;
+        margin: 10px auto;
+    }
+    .newUser {
+        padding-left: 2px;
+    }
 }

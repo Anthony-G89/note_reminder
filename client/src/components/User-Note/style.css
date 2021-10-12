@@ -182,6 +182,7 @@ label {
     width: 31%;
     padding: 5px;
     margin: 10px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .userNoteTitle {
@@ -263,9 +264,9 @@ label {
 }
 
 
-/* CHANGING STYLE WHEN HITTING 900PX AND LESS */
+/* CHANGING STYLE VERTICAL WHEN HITTING 900PX AND LESS */
 
-@media screen  and (max-width:900px) {
+@media screen  and (max-width:900px) and (orientation: portrait) {
 
     .noteContainer {
         overflow-y: scroll;

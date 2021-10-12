@@ -22,7 +22,7 @@ const LoginUser = () => {
                     <img src={process.env.PUBLIC_URL + "./assets/login-img-min.jpg"} className="loginImage" alt="Image for login page" />
                 </div>
                 <div className="col-6">
-                    <form className="formWrapper">
+                    <form className="formWrapperInLogin">
                         <label className="loginLabel">Email</label>
                         <input className="loginInput"  placeholder="Enter Email" />
                         <br />
