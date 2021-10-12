@@ -1,12 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
+import React, { useState } from 'react';
 import "./style.css";
 import { Link } from 'react-router-dom';
 
 const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody, addingNote, noteList }) => {
 
-
-    // const []
+    const [searchTerm, setSearchTerm] = useState("");
 
 
     return (
@@ -24,7 +23,7 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
             <div className="noteContainer">
                 <div className='userNameAndSearchBarContainer'>
                     <h2 className="userWelcomeMessage"> Hey Anthony! {displayingFirstName} </h2>
-                    <input className='searchBar' placeholder='Search for notes by title...'  />
+                    <input className='searchBar' placeholder='Search for notes by title...' onChange={event => setSearchTerm(event.target.value)} />
                     <img className='searchIcon' src={process.env.PUBLIC_URL + "./assets/Search_black_small.png"} />
                 </div>
                 <div className="row rowDiv">
@@ -52,7 +51,14 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
 
                     <div className="col-6 listOfNote">
                         {noteList.length ?
-                            noteList.map(note => (
+                            noteList.filter((val) => {
+                                // console.log(val)
+                                if (searchTerm === "") {
+                                    return val
+                                } else if (val.title.toLowerCase().includes(searchTerm)) {
+                                    return val
+                                }
+                            }).map(note => (
                                 <div key={note.id} className="displayingNotes">
                                     <div className="userNoteTitle">{note.title}</div>
                                     <div className="userNoteBody">{note.body}</div>
