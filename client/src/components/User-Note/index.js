@@ -23,7 +23,7 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
             <div className="noteContainer">
                 <div className='userNameAndSearchBarContainer'>
                     <h2 className="userWelcomeMessage"> Hey Anthony! {displayingFirstName} </h2>
-                    <input className='searchBar' placeholder='Search for notes by title...' onChange={event => setSearchTerm(event.target.value)} />
+                    <input className='searchBar' placeholder='Search for note by title...' onChange={event => setSearchTerm(event.target.value)} />
                     <img className='searchIcon' src={process.env.PUBLIC_URL + "./assets/Search_black_small.png"} />
                 </div>
                 <div className="row rowDiv">
@@ -51,12 +51,12 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
 
                     <div className="col-6 listOfNote">
                         {noteList.length ?
-                            noteList.filter((val) => {
-                                // console.log(val)
+                            noteList.filter((listOfNotes) => {
+                                // console.log(listOfNotes)
                                 if (searchTerm === "") {
-                                    return val
-                                } else if (val.title.toLowerCase().includes(searchTerm)) {
-                                    return val
+                                    return listOfNotes
+                                } else if (listOfNotes.title.toLowerCase().includes(searchTerm)) {
+                                    return listOfNotes
                                 }
                             }).map(note => (
                                 <div key={note.id} className="displayingNotes">
