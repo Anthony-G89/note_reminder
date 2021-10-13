@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1, 20],
-                notNull: { args: true, msg: "You must enter a password" }
+                // notNull: { args: true, msg: "You must enter a password" }
             }
         }
 
