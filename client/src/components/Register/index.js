@@ -12,7 +12,7 @@ const Register = ({ registeringUser, setFirstName, setLastName, setEmail, setPas
 
 
 
-    
+
     return (
         <div className="registerWrapper">
             <div className="registerContainer row align-items-center">
@@ -29,12 +29,11 @@ const Register = ({ registeringUser, setFirstName, setLastName, setEmail, setPas
                         <input className="registerInput" placeholder="Enter Email" onChange={event => setEmail(event.target.value)} />
                         <label className="registerLabel">Password</label>
                         <input className="registerInput" placeholder=" Enter Password" type={"password"} onChange={event => setPassword(event.target.value)} />
-
                         <p className="alreadyAMember">Already on Note Reminder?
                             <Link to="/login"><a className="loginFromRegisterBtn" href="/login">Log in</a></Link>
                         </p>
 
-                        <button className="registerBtn" onClick={registeringUser}>Register</button>
+                        <button className="registerBtn" type='button' onClick={registeringUser}>Register</button>
                     </form>
 
 

@@ -63,13 +63,19 @@ function App() {
     axios.get("/getNotes").then(res =>
       setNoteList(res.data))
   };
-
   useEffect(() => {
     loadNotes()
   }, []);
 
 
-  const registeringUser = () => {
+  // Function to signup users
+  const registeringUser = (e) => {
+    if (!firstName || !lastName) {
+      alert("Please enter a first name & last name");
+      return;
+    }
+    console.log(e)
+    e.preventDefault();
     axios.post("/api/registerUser", {
       firstName: firstName,
       lastName: lastName,
@@ -105,7 +111,7 @@ function App() {
 
   // Deleting Note
   const deleteNote = (id) => {
-    console.log(id)
+    // console.log(id)
     axios.delete(`/api/addingNote/${id}`)
       .then(response => {
         const newNoteList = noteList.filter(note => note.id !== id);

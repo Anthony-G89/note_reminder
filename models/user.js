@@ -21,7 +21,8 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [1, 20]
+                len: [1, 20],
+                notNull: { args: true, msg: "You must enter a password" }
             }
         }
 
@@ -34,6 +35,9 @@ module.exports = function (sequelize, DataTypes) {
     User.addHook("beforeCreate", function (user) {
         user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
     });
+
+
+    
 
     return User;
 };
