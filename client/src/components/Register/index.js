@@ -6,16 +6,13 @@ import { Link } from 'react-router-dom';
 
 
 
-const Register = ({ setFirstName, setLastName, setEmail, setPassword }) => {
+const Register = ({ registeringUser, setFirstName, setLastName, setEmail, setPassword }) => {
 
 
 
 
 
-    function registerUser() {
-        alert("Register btn is working")
-    }
-
+    
     return (
         <div className="registerWrapper">
             <div className="registerContainer row align-items-center">
@@ -31,13 +28,13 @@ const Register = ({ setFirstName, setLastName, setEmail, setPassword }) => {
                         <label className="registerLabel">Email</label>
                         <input className="registerInput" placeholder="Enter Email" onChange={event => setEmail(event.target.value)} />
                         <label className="registerLabel">Password</label>
-                        <input className="registerInput" placeholder=" Enter Password" onChange={event => setPassword(event.target.value)} />
+                        <input className="registerInput" placeholder=" Enter Password" type={"password"} onChange={event => setPassword(event.target.value)} />
 
                         <p className="alreadyAMember">Already on Note Reminder?
                             <Link to="/login"><a className="loginFromRegisterBtn" href="/login">Log in</a></Link>
                         </p>
 
-                        <button className="registerBtn" onClick={registerUser}>Register</button>
+                        <button className="registerBtn" onClick={registeringUser}>Register</button>
                     </form>
 
 

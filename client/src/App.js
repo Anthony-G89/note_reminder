@@ -20,7 +20,7 @@ function App() {
 
   //  capturing user register info
   const [firstName, setFirstName] = useState("");
-  const [lasttName, setLastName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
 
@@ -32,7 +32,7 @@ function App() {
   const [deletingNote, setDeletingNote] = useState({});
   const [editingNote, setEditingNote] = useState([]);
 
-  
+
   // Opening and Closing Delete Modal
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -68,6 +68,21 @@ function App() {
     loadNotes()
   }, []);
 
+
+  const registeringUser = () => {
+    axios.post("/api/registerUser", {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      Password: Password
+    }).then((data) => {
+      console.log(data)
+    })
+      .catch((err) => {
+        console.log(err)
+      })
+  };
+
   //  Submitting Note
   const submitNote = (e) => {
     e.preventDefault();
@@ -85,7 +100,7 @@ function App() {
         { title: title, body: body, id: noteID }
       ])
     })
-   
+
   };
 
   // Deleting Note
@@ -126,6 +141,7 @@ function App() {
         <Route path="/register"
           render={(props) => (
             < Register
+              registeringUser={registeringUser}
               setFirstName={setFirstName}
               setLastName={setLastName}
               setEmail={setEmail}

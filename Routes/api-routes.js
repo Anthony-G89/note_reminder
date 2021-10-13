@@ -1,7 +1,26 @@
 // const res = require("express/lib/response");
 const db = require("../models");
+// import { Redirect } from "react-router-dom";
 
 module.exports = function (app) {
+
+
+    // These routes are registering the user to the DB
+
+    app.post("/api/registerUser", (req, res) => {
+        db.User.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            Password: req.body.Password
+        }).then((dbUser) => {
+            res.status(202)
+            // <Redirect to="/login" push={true} />
+        })
+            .catch((err) => {
+                console.log(err)
+            })
+    })
 
     app.get("/getNotes", (req, res) => {
         db.Note.findAll({}).then((dbNotes) => {
