@@ -30,10 +30,10 @@ const Register = ({ registeringUser, setFirstName, setLastName, setEmail, setPas
                         <label className="registerLabel">Password</label>
                         <input className="registerInput" placeholder=" Enter Password" type={"password"} onChange={event => setPassword(event.target.value)} />
                         <p className="alreadyAMember">Already on Note Reminder?
-                            <Link to="/login"><a className="loginFromRegisterBtn" href="/login">Log in</a></Link>
+                            <Link to="/login" className="loginFromRegisterBtn">Log in</Link>
                         </p>
 
-                        <button className="registerBtn" type='button' onClick={registeringUser}>Register</button>
+                        <button className="registerBtn" type='submit' onClick={registeringUser}>Register</button>
                     </form>
 
 

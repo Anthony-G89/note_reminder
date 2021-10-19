@@ -18,11 +18,11 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         password: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 len: [1, 20],
-                // notNull: { args: true, msg: "You must enter a password" }
+                notNull: { args: true, msg: "You must enter a password...Test" }
             }
         }
 

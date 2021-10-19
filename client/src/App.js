@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import BackGroundVideo from "./components/BackgroundVideo";
 import Description from "./components/Landing-page-Decription";
 import NavBar from "./components/NavBar";
@@ -22,7 +22,7 @@ function App() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [password, setPassword] = useState(``);
 
 
   //  Capturing what the user types for their notes
@@ -80,9 +80,10 @@ function App() {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      Password: Password
+      password: password,
     }).then((data) => {
       console.log(data)
+      window.location.replace("/login")
     })
       .catch((err) => {
         console.log(err)

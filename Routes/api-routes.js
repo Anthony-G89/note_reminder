@@ -11,12 +11,12 @@ module.exports = function (app) {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            Password: req.body.Password
+            password: req.body.password
         }).then((results) => {
             res.json(results)
         })
             .catch((err) => {
-                console.log(err)
+                console.error(err)
             })
     });
 
