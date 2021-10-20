@@ -22,11 +22,17 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1, 20],
-                notNull: { args: true, msg: "You must enter a password...Test" }
+                notNull: { args: true, msg: "You must enter a password" }
             }
         }
 
     });
+
+    User.associate = models => {
+        User.hasMany(models.Note, {
+            onDelete: "cascade"
+        });
+    };
 
     User.prototype.validPassword = function (password) {
         return bcrypt.compareSync(password, this.password);
@@ -37,7 +43,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
 
-    
+
 
     return User;
 };

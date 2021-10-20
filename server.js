@@ -8,8 +8,9 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-require("./Routes/api-routes")(app);
-
+require("./Routes/note-api-routes")(app);
+require("./Routes/user-api-routes")(app);
+require("./Routes/loginUser-api-routes")(app);
 db.sequelize.sync().then(function () {
     app.listen(PORT, function () {
         console.log("App listening on PORT" + PORT);

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import "./style.css";
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody, addingNote, noteList }) => {
 
@@ -59,9 +60,11 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
                                     return listOfNotes
                                 }
                             }).map(note => (
+                                // console.log(note)
                                 <div key={note.id} className="displayingNotes">
                                     <div className="userNoteTitle">{note.title}</div>
                                     <div className="userNoteBody">{note.body}</div>
+                                    <p>{moment(note.createdAt).format('LLLL')}</p>
                                     <div className="deleteAndEditContainer">
                                         <img className="deleteBtn" onClick={() => showDeleteModal(note)} title="Delete" src={process.env.PUBLIC_URL + "./assets/outline_delete_black_36dp.png"} />
                                         <img className="editBtn " onClick={() => showEditModal(note)} title="Edit" src={process.env.PUBLIC_URL + "./assets/outline_edit_note_black_36dp.png"} />

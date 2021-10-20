@@ -15,5 +15,13 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
     })
+
+    Note.associate = models => {
+        Note.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        })
+    };
     return Note;
 };

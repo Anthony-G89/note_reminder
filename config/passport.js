@@ -8,7 +8,7 @@ passport.use(new LocalStrategy(
         usernameField: "email"
     },
     function (email, password, done) {
-        db.User.findone({
+        db.user.findOne({
             where: {
                 email: email
             }
@@ -29,3 +29,14 @@ passport.use(new LocalStrategy(
         });
     }
 ));
+
+passport.serializeUser(function(dbUser, cb) {
+    cb(null, dbUser);
+  });
+  
+  passport.deserializeUser(function(obj, cb) {
+    cb(null, obj);
+  });
+  
+  
+  module.exports = passport;

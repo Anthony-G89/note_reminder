@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import BackGroundVideo from "./components/BackgroundVideo";
 import Description from "./components/Landing-page-Decription";
 import NavBar from "./components/NavBar";
@@ -58,6 +58,8 @@ function App() {
   };
 
 
+  // CRUD OPERATION FOR NOTES   
+
   // Function to get all notes
   function loadNotes() {
     axios.get("/getNotes").then(res =>
@@ -66,29 +68,6 @@ function App() {
   useEffect(() => {
     loadNotes()
   }, []);
-
-
-  // Function to signup users
-  const registeringUser = (e) => {
-    if (!firstName || !lastName) {
-      alert("Please enter a first name & last name");
-      return;
-    }
-    console.log(e)
-    e.preventDefault();
-    axios.post("/api/registerUser", {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-    }).then((data) => {
-      console.log(data)
-      window.location.replace("/login")
-    })
-      .catch((err) => {
-        console.log(err)
-      })
-  };
 
   //  Submitting Note
   const submitNote = (e) => {
@@ -121,8 +100,6 @@ function App() {
       })
   };
 
-
-
   // Updating Note
   const handleNoteUpdate = (updatedNote) => {
     console.log(updatedNote)
@@ -136,6 +113,49 @@ function App() {
     closeEditModal();
     // window.location.reload();
   };
+
+
+  // FUNCTIONS TO SIGNUP AND LOGIN USERS
+
+  // Function to signup users
+  const registeringUser = (e) => {
+    if (!firstName || !lastName) {
+      alert("Please enter a first name & last name");
+      return;
+    }
+    console.log(e)
+    e.preventDefault();
+    axios.post("/api/registerUser", {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+    }).then((data) => {
+      console.log(data)
+      window.location.replace("/login")
+    })
+      .catch((err) => {
+        console.log(err)
+      })
+  };
+
+
+  const userLoggingIn = (e) => {
+    e.preventDefault();
+    // if (!email || !password) {
+    //   alert("Please enter your email & password. If you don't have one click on the Register here to begin");
+    //   return;
+    // };
+    axios.post("/api/login", {
+      email: email,
+      password: password
+    }).then((data) => {
+      console.log(data)
+      window.location.replace("/userDashbored")
+    })
+
+  };
+
 
   return (
     <div >
@@ -155,7 +175,14 @@ function App() {
               setPassword={setPassword} />
           )}
         />
-        <Route path="/login" component={LoginUser} />
+        <Route path="/login" render={(props) => (
+          <LoginUser
+            userLoggingIn={userLoggingIn}
+            setEmail={setEmail}
+            setPassword={setPassword}
+          />
+        )}
+        />
         <Route path="/userDashbored" render={(props) => (
           <UserNote
             displayingFirstName={firstName}
