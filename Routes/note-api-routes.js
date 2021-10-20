@@ -1,6 +1,7 @@
-// const res = require("express/lib/response");
+
+const { query } = require("express");
 const db = require("../models");
-// import { Redirect } from "react-router-dom";
+
 
 module.exports = function (app) {
 
@@ -11,7 +12,7 @@ module.exports = function (app) {
         })
     });
 
-    app.get("/getNotes/:id" , (req , res) => {
+    app.get("/getNotes/:id", (req, res) => {
         db.Note.findOne({
             where: {
                 id: req.params.id
@@ -66,4 +67,31 @@ module.exports = function (app) {
             })
     });
 
+    //  These routes are INCLUDING my USER_DB
+    app.get("/getNotes", (req, res) => {
+        db.Note.findAll({
+            where: query,
+            include: [db.User]
+        }).then((result) => {
+            res.json(result)
+        })
+            .catch((err) => {
+                console.error(err)
+            })
+    });
+
+
+    app.get("/getNotes/:id", (req, res) => {
+        db.Note.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.User]
+        }).then((result) => {
+            res.json(result)
+        })
+            .catch((err) => {
+                console.error(err)
+            })
+    })
 };
