@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
 import "./style.css";
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -24,12 +24,12 @@ const LoginUser = ({ userLoggingIn , setEmail, setPassword }) => {
                 <div className="col-6">
                     <form className="formWrapperInLogin">
                         <label className="loginLabel">Email</label>
-                        <input className="loginInput" placeholder="Enter Email" onChange={event => setEmail(event.target.value)} />
+                        <input className="loginInput" placeholder="Enter Email" type={"email"} onChange={event => setEmail(event.target.value)} />
                         <br />
                         <label className="loginLabel">Password</label>
-                        <input className="loginInput" placeholder=" Enter Password" onChange={event => setPassword(event.target.value)} />
+                        <input className="loginInput" placeholder=" Enter Password" type={"password"} onChange={event => setPassword(event.target.value)} />
                         <p className="newUser">New to Note Reminder?
-                            <Link to="/register"><a href="/register" className="registerBtnFromLogin">Register here</a></Link>
+                            <Link to="/register" className="registerBtnFromLogin">Register here</Link>
                         </p>
                         <button className="loginBtn" onClick={userLoggingIn}>Log In</button>
                     </form>

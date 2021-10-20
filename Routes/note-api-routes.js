@@ -1,4 +1,4 @@
-
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 const { query } = require("express");
 const db = require("../models");
 
@@ -67,8 +67,17 @@ module.exports = function (app) {
             })
     });
 
+
+    app.get("/userDashbored", isAuthenticated, (req, res) => {
+        res.render("/userDashbored")
+    });
+
     //  These routes are INCLUDING my USER_DB
     app.get("/getNotes", (req, res) => {
+        var query ={};
+        if (req.query.User_id) {
+            query.UserId = req.query.User_id;
+          }
         db.Note.findAll({
             where: query,
             include: [db.User]
@@ -94,4 +103,6 @@ module.exports = function (app) {
                 console.error(err)
             })
     })
+
+    
 };

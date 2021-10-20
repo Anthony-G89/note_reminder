@@ -141,17 +141,21 @@ function App() {
 
 
   const userLoggingIn = (e) => {
+    
     e.preventDefault();
-    // if (!email || !password) {
-    //   alert("Please enter your email & password. If you don't have one click on the Register here to begin");
-    //   return;
-    // };
+    if (!email || !password) {
+      alert("Please enter your email & password. If you don't have one click on the Register here to begin");
+      return;
+    };
     axios.post("/api/login", {
       email: email,
       password: password
     }).then((data) => {
       console.log(data)
       window.location.replace("/userDashbored")
+    })
+    .catch((err) => {
+      console.log(err)
     })
 
   };
