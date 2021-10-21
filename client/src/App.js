@@ -31,6 +31,7 @@ function App() {
   const [noteList, setNoteList] = useState([]);
   const [deletingNote, setDeletingNote] = useState({});
   const [editingNote, setEditingNote] = useState([]);
+  const [userId , setUserId] = useState([]);
 
 
   // Opening and Closing Delete Modal
@@ -77,13 +78,15 @@ function App() {
       return;
     };
     axios.post("/api/addingNote", {
+      userId: userId,
       title: title,
       body: body
     }).then((response) => {
-      const noteID = response.data.id;
+      console.log(response)
+      // const noteID = response.data.id;
       setNoteList([
         ...noteList,
-        { title: title, body: body, id: noteID }
+        { title: title, body: body }
       ])
     })
 
