@@ -84,10 +84,10 @@ function App() {
     }).then((response) => {
       console.log(response)
       // const noteID = response.data.id;
-      setNoteList([
-        ...noteList,
-        { title: title, body: body }
-      ])
+      // setNoteList([
+      //   ...noteList,
+      //   { title: title, body: body  }
+      // ])
     })
 
   };

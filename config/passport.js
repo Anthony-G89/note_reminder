@@ -13,7 +13,7 @@ passport.use(new LocalStrategy(
                 email: email
             }
         }).then(function (dbUser) {
-            console.log({dbUser});
+            console.log(dbUser.dataValues);
 
             if (!dbUser) {
                 return done(null, false, {

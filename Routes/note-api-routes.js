@@ -25,7 +25,6 @@ module.exports = function (app) {
     app.post("/api/addingNote",  (req, res) => {
         console.log(req.user);
         db.Note.create({
-            userId: req.body.params,
             title: req.body.title,
             body: req.body.body
         }).then(function (results) {
