@@ -1,6 +1,7 @@
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 const { query } = require("express");
 const db = require("../models");
+const req = require("express/lib/request");
 
 
 module.exports = function (app) {
@@ -83,12 +84,18 @@ module.exports = function (app) {
         res.render("/userDashbored")
     });
 
+
+    app.get("/logout" , (req, res) => {
+        req.logout();
+        res.json("You're now logged out")
+    });
+
     //  These routes are INCLUDING my USER_DB
     app.get("/getNotes", (req, res) => {
-            // console.log(req);
+        // console.log(req);
         db.Note.findAll({
             where: {
-                UserId: req.user.UserId
+                UserId: req.user.id
             },
             include: [db.User]
         }).then((result) => {

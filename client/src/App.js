@@ -120,7 +120,7 @@ function App() {
   };
 
 
-  // FUNCTIONS TO SIGNUP AND LOGIN USERS
+  // FUNCTIONS TO SIGNUP, LOGIN USERS , AND LOG OUT
 
   // Function to signup users
   const registeringUser = (e) => {
@@ -162,12 +162,24 @@ function App() {
       setFirstName(grabbingFirstName)
       console.log(grabbingFirstName);
       window.location.replace("/userDashbored")
-      // <Redirect to="/Dashbored" />
+      // <Redirect to="/userDashbored" />
     })
       .catch((err) => {
         console.log(err)
       })
 
+  };
+
+
+  const logOut = () => {
+    axios.get("/logout")
+      .then((data) => {
+        console.log(data);
+        window.location.replace("/")
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   };
 
 
@@ -207,6 +219,7 @@ function App() {
             capturingBody={setBody}
             addingNote={submitNote}
             noteList={noteList}
+            logOutUser={logOut}
           />
         )}
         />

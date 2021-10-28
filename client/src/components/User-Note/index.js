@@ -4,7 +4,7 @@ import "./style.css";
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
-const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody, addingNote, noteList }) => {
+const UserNote = ({ displayingFirstName, logOutUser, showDeleteModal, showEditModal, capturingTitle, capturingBody, addingNote, noteList }) => {
     console.log(displayingFirstName);
     const [searchTerm, setSearchTerm] = useState("");
 
@@ -16,7 +16,7 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
                 <Link to="/"><h2 className="appTitleInDashbored">Note Reminder</h2></Link>
                 <nav>
                     <div className="logoutContainer">
-                        <Link to="/"><img className="logoutBtn" title="Logout" src={process.env.PUBLIC_URL + "./assets/outline_logout_black_48dp.png"} /></Link>
+                        <img onClick={logOutUser} className="logoutBtn" title="Logout" src={process.env.PUBLIC_URL + "./assets/outline_logout_black_48dp.png"} />
                     </div>
                 </nav>
             </header>
