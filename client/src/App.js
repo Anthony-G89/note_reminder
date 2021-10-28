@@ -161,7 +161,7 @@ function App() {
       const grabbingFirstName = data.data.firstName;
       setFirstName(grabbingFirstName)
       console.log(grabbingFirstName);
-      window.location.replace("/userDashbored")
+      // window.location.replace("/userDashbored")
       // <Redirect to="/userDashbored" />
     })
       .catch((err) => {
