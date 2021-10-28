@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturingTitle, capturingBody, addingNote, noteList }) => {
-
+    console.log(displayingFirstName);
     const [searchTerm, setSearchTerm] = useState("");
 
 
@@ -23,7 +23,7 @@ const UserNote = ({ displayingFirstName, showDeleteModal, showEditModal, capturi
 
             <div className="noteContainer">
                 <div className='userNameAndSearchBarContainer'>
-                    <h2 className="userWelcomeMessage"> Hey Anthony! {displayingFirstName} </h2>
+                    <h2 className="userWelcomeMessage"> Hey  {displayingFirstName} </h2>
                     <input className='searchBar' placeholder='Search for note by title...' onChange={event => setSearchTerm(event.target.value)} />
                     <img className='searchIcon' src={process.env.PUBLIC_URL + "./assets/Search_black_small.png"} />
                 </div>

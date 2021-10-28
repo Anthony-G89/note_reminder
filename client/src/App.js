@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, useHistory } from "react-router-dom";
 import BackGroundVideo from "./components/BackgroundVideo";
 import Description from "./components/Landing-page-Decription";
 import NavBar from "./components/NavBar";
@@ -31,7 +31,8 @@ function App() {
   const [noteList, setNoteList] = useState([]);
   const [deletingNote, setDeletingNote] = useState({});
   const [editingNote, setEditingNote] = useState([]);
-  const [userId , setUserId] = useState([]);
+  const [userId, setUserId] = useState([]);
+
 
 
   // Opening and Closing Delete Modal
@@ -66,6 +67,7 @@ function App() {
     axios.get("/getNotes").then(res =>
       setNoteList(res.data))
   };
+
   useEffect(() => {
     loadNotes()
   }, []);
@@ -83,11 +85,11 @@ function App() {
       body: body
     }).then((response) => {
       console.log(response)
-      // const noteID = response.data.id;
-      // setNoteList([
-      //   ...noteList,
-      //   { title: title, body: body  }
-      // ])
+      const noteID = response.data.id;
+      setNoteList([
+        ...noteList,
+        { title: title, body: body, id: noteID }
+      ])
     })
 
   };
@@ -105,7 +107,7 @@ function App() {
 
   // Updating Note
   const handleNoteUpdate = (updatedNote) => {
-    console.log(updatedNote)
+    // console.log(updatedNote)
     const newList = noteList.map((note) => {
       if (note.id === updatedNote.id) {
         return updatedNote
@@ -126,7 +128,7 @@ function App() {
       alert("Please enter a first name & last name");
       return;
     }
-    console.log(e)
+    // console.log(e)
     e.preventDefault();
     axios.post("/api/registerUser", {
       firstName: firstName,
@@ -134,7 +136,7 @@ function App() {
       email: email,
       password: password,
     }).then((data) => {
-      console.log(data)
+      // console.log(data)
       window.location.replace("/login")
     })
       .catch((err) => {
@@ -143,8 +145,9 @@ function App() {
   };
 
 
+
   const userLoggingIn = (e) => {
-    
+
     e.preventDefault();
     if (!email || !password) {
       alert("Please enter your email & password. If you don't have one click on the Register here to begin");
@@ -154,12 +157,16 @@ function App() {
       email: email,
       password: password
     }).then((data) => {
-      console.log(data)
+      // console.log(data.data.firstName)
+      const grabbingFirstName = data.data.firstName;
+      setFirstName(grabbingFirstName)
+      console.log(grabbingFirstName);
       window.location.replace("/userDashbored")
+      // <Redirect to="/Dashbored" />
     })
-    .catch((err) => {
-      console.log(err)
-    })
+      .catch((err) => {
+        console.log(err)
+      })
 
   };
 
@@ -187,6 +194,7 @@ function App() {
             userLoggingIn={userLoggingIn}
             setEmail={setEmail}
             setPassword={setPassword}
+
           />
         )}
         />
